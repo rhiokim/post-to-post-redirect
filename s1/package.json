@@ -1,0 +1,19 @@
+{
+  "name": "s1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node .",
+    "docker:images": "docker images | grep s1",
+    "docker:rm": "docker rm -f s1",
+    "docker:run": "docker run -dit -p 5556:5556 --name s1 s1:latest",
+    "docker:build": "docker build --tag s1 . && npm run docker:images",
+    "deploy": "npm run docker:build && npm run docker:rm && npm run docker:run"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0"
+  }
+}
